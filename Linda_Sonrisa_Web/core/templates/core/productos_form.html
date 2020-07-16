@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+
+
+{% load static %}
+
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<div><br></div>
+<h1 class="display-4 text-center">Agregar Producto</h1><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+
+    <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+
+    <label for="">Nombre Producto</label>
+    <input type="text" name="nombre" >
+    <br>
+    <label for="">Marca</label>
+    <input type="text" name="marca" id="marca">
+    <br>
+    <label for="">Descripción</label>
+    <textarea class="form-control" name="desc" id="desc" rows="2"></textarea>
+    <br>
+    <label for="">Precio Compra</label><br>
+    <input type="number" name="precom" id="precom">
+    <br><br>
+    <label for="">Precio Venta</label><br>
+    <input type="number" name="preven" id="preven">
+    <br><br>
+    <label for="">Stock</label><br>
+    <input type="number" name="stock" id="stock">
+    <br>   <br>
+    <label for="">Stock Crítico</label><br>
+    <input type="number" name="stockcri" id="stockcri">
+    <br><br>
+    <label for="">Vencimiento</label><br>
+    <input type="date" name="fecha" id="fecha">
+    <br><br>
+    <label for="">Proveedor</label><br>
+    
+    <select name="prov" id="prov"> <option value="">Seleccionar...</option>
+        {% for p in proveedor %}
+            <option value="{{p.0}}">{{p.1}}</option>
+        {% endfor %}
+    </select>
+    
+    <br><br>
+    
+    <label for="">Categoria</label><br>
+    <select name="categoria" id="categoria"><option value="">Seleccionar...</option>
+        {% for c in categoria %}
+            <option value="{{c.0}}">{{c.1}}</option>
+        {% endfor %}
+    
+    </select>
+    <br><br>
+
+<button class="submit btn btn-success"><i class="fas fa-database"></i>Enviar</button>
+</form>
+        </div>
+    </div>
+</div>
+    
+
+
+{% endblock contenido %}

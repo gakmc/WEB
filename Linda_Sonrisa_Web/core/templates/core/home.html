@@ -1,0 +1,187 @@
+{% extends "core/base.html" %}
+
+{%load static %}
+
+{% block contenido %}
+<br><br><br><br>
+<!-- Hero section -->
+<div class="container-fluid hero-container">
+
+  <div class="container">
+    <div class="row hero-row">
+
+      <div class="col-md-6 hero-text">
+        <h1 class="hero-title">Bienvenido a Clínica Linda Sonrisa</h1>
+        <h3 class="hero-under-title">Nos preocupamos por tu salud Dental</h3>
+        <a href="{% url 'nueva_reserva' %}" class="btn btn-lg btn-hero">Reserva tu hora Aquí</a>
+      </div>
+
+      <div class="col-md-6">
+        <img class="hero-image" src="{% static 'core/img/doctor-1-1.png' %}">
+      </div>
+    </div>
+  </div>
+
+</div class="contenido">
+<!-- Hero section -->
+<div>
+</div>
+<!-- Services section -->
+
+<div class="container services" id="services">
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <div class="icon-list-item">
+
+        <div class="icon-list-icon">
+          <span class="icon icon-toothbraces"><img class="hero-image" src="{% static 'core/img/orthodontic.png' %}"></span>
+        </div>
+
+        <div class="icon-list-content">
+          <h3 class="icon-list-title">Ortodoncia</h3>
+          <h5 class="icon-list-under">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit nihil impedit.</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="icon-list-item">
+
+        <div class="icon-list-icon">
+          <span class="icon icon-toothstop"><img class="hero-image" src="{% static 'core/img/estraction.png' %}"></span>
+        </div>
+
+        <div class="icon-list-content">
+          <h3 class="icon-list-title">Extracción Dental</h3>
+          <h5 class="icon-list-under">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod.</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="icon-list-item">
+
+        <div class="icon-list-icon">
+          <span class="icon icon-toothimplant"><img class="hero-image" src="{% static 'core/img/cirugia.png' %}"></span>
+        </div>
+
+        <div class="icon-list-content">
+          <h3 class="icon-list-title">Cirugía Dental</h3>
+          <h5 class="icon-list-under">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id.</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <div class="icon-list-item">
+
+        <div class="icon-list-icon">
+          <span class="icon icon-toothcheck"><img class="hero-image" src="{% static 'core/img/prevencion.png' %}"></span>
+        </div>
+
+        <div class="icon-list-content">
+          <h3 class="icon-list-title">Prevención Dental</h3>
+          <h5 class="icon-list-under">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit.</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="icon-list-item">
+
+        <div class="icon-list-icon">
+          <span class="icon icon-toothsparkle"><img class="hero-image" src="{% static 'core/img/blanqueo.png' %}"></span>
+        </div>
+
+        <div class="icon-list-content">
+          <h3 class="icon-list-title">Blanqueamiento</h3>
+          <h5 class="icon-list-under">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id.</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="icon-list-item">
+
+        <div class="icon-list-icon">
+          <span class="icon icon-toothcrack"><img class="hero-image" src="{% static 'core/img/urgencia.png' %}"></span>
+        </div>
+
+        <div class="icon-list-content">
+          <h3 class="icon-list-title">Urgencia</h3>
+          <h5 class="icon-list-under">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Services section End -->
+
+<div class="container-fluid contact-section">
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-6">
+        
+        <h2 class="contact-form-title">Beneficio una Linda Sonrisa para ti! ¿Cómo obtener el benificio?</h2>
+        <div class="testimonial">
+          <p class="testimonial-text">Ingresa tus datos y si cumples los requisitos, podrás acceder a un importante descuento en tu arancel.</p>
+          <p class="testimonial-text">Infórmate de nuestro beneficio acercandote a nuestra sucursal, entregando los siguientes docuementos:</p>
+          <p class="testimonial-text">1. Fotocopia Cedula de Identidad (ambos lados)</p>
+          <p class="testimonial-text">2. Ficha Protección Social</p>
+          <p class="testimonial-text">3. Certificado de Afiliación a Fonasa</p>
+          <p class="testimonial-text">4. Últimas 3 coticaciones, en caso de estar cesante presentar finiquito</p>
+          <a href="{% url 'nueva_reserva' %}" class="btn btn-lg btn-hero">Reserva tu hora Aquí</a>
+        </div>
+        
+      </div>
+
+      <div class="col-lg-6" id="contact">
+        <h2 class="contact-form-title">Contacto</h2>
+        <ul class="input-list style-1 clearfix">
+          <li>
+            <input type="text" placeholder="Porfavor, ingrese su nombre completo">
+          </li>
+          <li>
+            <input type="text" placeholder="Ingrese su Correo Electrónico">
+          </li>
+          <li>
+            <input type="text" placeholder="Ingrese su número de Teléfono">
+          </li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-hero contact-button">Enviar</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock contenido %}

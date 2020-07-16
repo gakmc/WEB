@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+<br>
+<br>
+<br>
+<div><br></div>
+
+<div class="container-fluid contact-section">
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-lg-6">
+        
+        
+        <div class="testimonial">
+          <p class="testimonial-text">Aquí podrás agendar y revisar tus citas con tu dentista.</p>
+          <h4 class="testimonial-name">Gracias por preferirnos</h4>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-text">Tu salud dental es importante para nosotros</p>
+          <h4 class="testimonial-name">Clínica Dental Linda Sonrisa</h4>
+        </div>
+        
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="contact-form-title">LOGIN</h2>
+        <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <!-- <ul class="input-list style-1 clearfix">
+          <li>
+            <input type="text" placeholder="Usuario">
+          </li>
+          <li>
+            <input type="text" placeholder="Contraseña">
+          </li>
+        </ul> -->
+        <input type="submit" value="login">
+        <!-- <button type="button" class="btn btn-lg btn-hero contact-button">Iniciar Sesión</button> -->
+      </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock contenido %}

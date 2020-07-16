@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<div><br></div>
+<div class="contenedor" style="margin-bottom: 150px;">
+<h1 class="text-center">Mis Reservas</h1>
+
+<div class="container">
+    <div class="row col-8">
+
+<div class="col-8">
+<table class="table table-dark shadow rounded border col-8">
+
+    <tr class="bg-primary border rounded text-center">
+                            <th>Especialidad</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Estado</th>
+    {% for r in misreservas %}
+    {% if user.username == r.usuario %} 
+    <tr class="bg-dark border rounded">
+        <td>{{r.especialidad}}</td>
+        <td>{{r.fecha_reserva}}</td>
+        <td>{{r.hora_reserva}}</td>
+        <td>{{r.estado_reserva}}</td>
+    </tr>
+
+    {% endif %}
+
+    {% endfor %}
+</table>
+
+</div>
+
+</div>
+</div>
+</div>
+{% endblock contenido %}

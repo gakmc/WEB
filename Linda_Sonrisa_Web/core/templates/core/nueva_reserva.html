@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<br>
+<br>
+<br>
+<br>
+<div><br></div>
+<div style="padding: 50px; text-align: center;">
+<h2>Agregar Reserva</h2>
+
+<form action="" method="POST">
+{% csrf_token %}
+<table">
+<tr><th><label for="id_usuario" style="display: none;">Usuario:</label></th><td><input type="text" name="usuario" maxlength="150" id="id_usuario" value="{{ user.username }}" style="display: none;"></td></tr>
+<tr><th><label for="id_fecha_reserva">Fecha reserva:</label></th><td><input type="date" name="fecha_reserva" class="form-control" placeholder="Select a date" required id="id_fecha_reserva"></td></tr>
+<tr><th><label for="id_hora_reserva">Hora reserva:</label></th><td><input type="time" name="hora_reserva" class="form-control" required id="id_hora_reserva"></td></tr>
+<tr><th><label for="id_especialidad">Especialidad:</label></th><td><select name="especialidad" required id="id_especialidad">
+  <option value="" selected>---------</option>
+  
+  <option value="1">Ortodoncia</option>
+  <option value="21">Extracción Dental</option>
+  <option value="22">Cirugía Dental</option>
+  <option value="23">Prevención Dental</option>
+  <option value="24">Blanqueamiento</option>
+  <option value="25">Urgencia</option>
+
+</select></td></tr>
+</table>
+
+<div style="display: flex; padding: 20px; justify-content: center;">
+<input type="reset" value="Limpiar">
+<input type="submit" value="Agendar">
+</div>
+</form>
+</div>
+{{mensaje}}
+
+{% endblock contenido %}
