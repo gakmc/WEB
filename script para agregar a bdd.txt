@@ -1,0 +1,1108 @@
+﻿--LOGIN
+--agregar TIPOPERSONA
+INSERT INTO TIPOPERSONA (IDTIPOPER, NOMTIPO, DESCRIPCION) VALUES ('1', 'Natural', 'Persona Natural');
+INSERT INTO TIPOPERSONA (IDTIPOPER, NOMTIPO, DESCRIPCION) VALUES ('2', 'Juridica', 'Persona Juridica');
+/
+--agregar PERSONA
+INSERT INTO PERSONA (RUT, NOMBRE, APELLIDOPATERNO, APELLIDOMATERNO, EMAIL, GENERO, TELEFONO, FECHANAC, IDTIPOPER, VIGENTE) VALUES ('18.623.689-0', 'Gabriel', 'Villar', 'Vera', 'gak335@gmail.com', 'Masculino', '+56935909027', TO_DATE('05-11-1993', 'DD-MM-YYYY'), '1', '1');
+INSERT INTO PERSONA (RUT, NOMBRE, APELLIDOPATERNO, APELLIDOMATERNO, EMAIL, GENERO, TELEFONO, FECHANAC, IDTIPOPER, VIGENTE) VALUES ('18.167.305-2', 'Jaime', 'Rojas', 'Yañez', '	ja.rojasy@alumnos.duoc.cl', 'Masculino', '+56978465231', TO_DATE('16-06-1992', 'DD-MM-YYYY'), '1', '1');
+INSERT INTO PERSONA (RUT, NOMBRE, APELLIDOPATERNO, APELLIDOMATERNO, EMAIL, GENERO, TELEFONO, FECHANAC, IDTIPOPER, VIGENTE) VALUES ('18.075.334-6', 'Sebastian', 'Wimmer', 'Wirlok', 's.wimmer@alumnos.duoc.cl', 'Masculino', '+56931264578', TO_DATE('15-03-1992', 'DD-MM-YYYY'), '1', '1');
+
+/
+
+--agregar ACCESO
+INSERT INTO   ACCESO (IDACCESO, NOMBRE, DESCRIPCION) VALUES ('1', 'admin', 'Administrador');
+INSERT INTO   ACCESO (IDACCESO, NOMBRE, DESCRIPCION) VALUES ('2', 'su', 'Administrador');
+INSERT INTO   ACCESO (IDACCESO, NOMBRE, DESCRIPCION) VALUES ('3', 'root', 'Administrador');
+/
+
+--agregar USUARIO
+INSERT INTO USUARIO (IDUSUARIO, RUT, CLAVE, ADMIN, IDACCESO) VALUES ('1', '18.623.689-0', 'admin', '1', '1');
+INSERT INTO USUARIO (IDUSUARIO, RUT, CLAVE, ADMIN, IDACCESO) VALUES ('2', '18.167.305-2', '1234', '1', '2');
+INSERT INTO USUARIO (IDUSUARIO, RUT, CLAVE, ADMIN, IDACCESO) VALUES ('3', '18.075.334-6', 'toor', '1', '3');
+/
+
+
+--EMPLEADOS
+
+--agregar TIPOEMPLEADO
+INSERT INTO TIPOEMPLEADO (IDTIPOEMP, NOMTIPOEMP, DESCRIPCION) VALUES ('1', 'Odontologo', 'Odontologo');
+INSERT INTO TIPOEMPLEADO (IDTIPOEMP, NOMTIPOEMP, DESCRIPCION) VALUES ('2', 'Recepción', 'Recepcionista');
+INSERT INTO TIPOEMPLEADO (IDTIPOEMP, NOMTIPOEMP, DESCRIPCION) VALUES ('3', 'Ecónomo', 'Encargado de pedidos');
+/
+
+--Prevision
+
+INSERT INTO PREVISION (IDPREVISION, NOMPREVISION) VALUES ('1', 'Fonasa');
+INSERT INTO PREVISION (IDPREVISION, NOMPREVISION) VALUES ('2', 'Isapre');
+/
+--TramoPrevision
+
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('1', 'A', 0.50, '1');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('2', 'B', 0.25, '1');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('3', 'C', 0.10, '1');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('4', 'D', '0', '1');
+/
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('5', 'Banmedica', 0.25, '2');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('6', 'Cruz Blanca', 0.25, '2');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('7', 'ConSalud', 0.25, '2');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('8', 'Vida Tres', 0.25, '2');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('9', 'Colmena', 0.25, '2');
+INSERT INTO TRAMO_PREVISION (IDTRAMOPREVISION, DESCRIPCION, COSTO_PAGO, IDPREVISION) VALUES ('10', 'MasVida', 0.25, '2');
+/
+
+--ESPECIALIDAD
+INSERT INTO ESPECIALIDAD (IDESPECIALIDAD, NOMESPECIALIDAD) VALUES ('10', 'Implantología')
+INSERT INTO ESPECIALIDAD (IDESPECIALIDAD, NOMESPECIALIDAD) VALUES ('20', 'Odontologia General')
+INSERT INTO ESPECIALIDAD (IDESPECIALIDAD, NOMESPECIALIDAD) VALUES ('30', 'Odontología Infantíl (Menor de 15 años)')
+INSERT INTO ESPECIALIDAD (IDESPECIALIDAD, NOMESPECIALIDAD) VALUES ('40', 'Ortodoncia')
+INSERT INTO ESPECIALIDAD (IDESPECIALIDAD, NOMESPECIALIDAD) VALUES ('50', 'Rehabilitacion Oral')
+
+
+--PROVEEDOR
+INSERT into PROVEEDOR (IDPROVEEDOR, RUT) VALUES (1, '77.371.920-9');
+/
+
+--PERSONA proveedor
+INSERT INTO PERSONA (RUT,NOMBRE,EMAIL,TELEFONO, FECHANAC,IDTIPOPER,VIGENTE) VALUES('77.371.920-9','Clan Dent', 'info@clandent.cl','+56226719562',TO_DATE('30-12-1999', 'DD-MM-YYYY'),2,1);
+/
+
+--ESTADOS RESERVA
+INSERT INTO ESTADO_RESERVA (IDESTADO, NOMBRE, DESCRIPCION) VALUES ('1', 'Reservado', 'Paciente en espera de atencion')
+INSERT INTO ESTADO_RESERVA (IDESTADO, NOMBRE, DESCRIPCION) VALUES ('2', 'Rechazado', 'Paciente o Odontologo Cancelo la Reserva')
+INSERT INTO ESTADO_RESERVA (IDESTADO, NOMBRE, DESCRIPCION) VALUES ('3', 'En Proceso', 'Paciente en atencion en este momento')
+INSERT INTO ESTADO_RESERVA (IDESTADO, NOMBRE, DESCRIPCION) VALUES ('4', 'Atendido', 'Paciente Finalizo su atención')
+/
+
+--CATEGORIA
+INSERT INTO CATEGORIA (IDCATEGORIA, NOMCATEGORIA, DESCRIPCION) VALUES ('100', 'Higiene Bucal', 'Cepillos
+,
+Pasta Dental,
+Hilo Dental
+,
+Colutorios
+,
+Irrigadores y Cepillos Eléctricos
+');
+
+INSERT INTO CATEGORIA (IDCATEGORIA, NOMCATEGORIA, DESCRIPCION) VALUES ('200', 'Endodoncia', 'Accesorios de Endodoncia,
+Obturación,
+Desinfección y Selladores Endodóntico,
+Pluggers y Spreader,
+Endo Ice,
+Lima K-Reamer,
+Espaciadores,
+Lima C+File,
+Lima H,
+Lima K,
+Nitiflex,
+Protaper,
+Waveone Gold');
+
+INSERT INTO CATEGORIA (IDCATEGORIA, NOMCATEGORIA, DESCRIPCION) VALUES ('300', 'Periodoncia', 'Hemostático,
+Anestésico Tópico,
+Accesorios de Periodoncia,
+Cureta y Jaquette,
+Sonda');
+
+INSERT INTO CATEGORIA (IDCATEGORIA, NOMCATEGORIA, DESCRIPCION) VALUES ('400', 'Equipos', 'Cavitron,
+Puntas e Insertos,
+Lubricantes,
+Lampara Fotocurado,
+Alta Velocidad,
+Kit Rotatorio,
+Localizador,
+Periodoncia,
+Micromotores y Prophy Jet,
+Turbinas,
+Scaler y Cavitron');
+
+INSERT INTO CATEGORIA (IDCATEGORIA, NOMCATEGORIA, DESCRIPCION) VALUES ('500', 'Prótesis', 'Accesorio para Prótesis,
+Acrílico,
+Manuales,
+Accesorios Prótesis,
+Operatoria y Estética');
+
+INSERT INTO CATEGORIA (IDCATEGORIA, NOMCATEGORIA, DESCRIPCION) VALUES ('600', 'Instrumental', 'Escobilla,
+Instrumental,
+Borde,
+Carbide,
+Diamante,
+Gate,
+Peeso,
+Fresarios,
+Cirugía,
+Lentulo,
+Pieza de Mano,
+Baja Velocidad,
+Accesorios');
+/
+
+
+--PRODUCTO
+INSERT INTO PRODUCTO (IDPRODUCTO, NOMPRODUCTO, SKU, MARCA, DESCRIPCION, PRECIOCOMPRA, PRECIOVENTA, STOCK, STOCKCRITICO, IDPROVEEDOR, IDCATEGORIA) VALUES ('1', 'Cureta', '00130000000000001', 'Hu-Friedy', 'Mini Five Mango 6R', '27500', '0', '10', '3', '1', '300');
+/
+
+--Secuencia para generar id Producto Automatico
+create sequence prod_seq start with 002;
+/
+
+--Trigger para insertar el id en el momento de insertar PRODUCTO
+create or replace trigger prod_trig
+    before insert on PRODUCTO
+        for each row
+    begin
+        select prod_seq.NEXTVAL
+        into :new.IDPRODUCTO
+        from dual;
+END;
+/
+
+
+--Listar EMPLEADO
+
+create or replace PROCEDURE mostrarEmpleado (registros out sys_refcursor)
+AS
+Begin
+    open registros for SELECT
+  a.idempleado ID,
+  b.RUT,
+  c.nomtipoemp CARGO,
+  b.NOMBRE,
+  b.apellidopaterno "APELLIDO PATERNO",
+  b.APELLIDOMATERNO "APELLIDO MATERNO",
+  b.EMAIL,
+  b.GENERO,
+  b.TELEFONO TELÉFONO,
+  b.FECHANAC "FECHA NACIMIENTO",
+  case b.vigente
+  when 0
+  then 'No Vigente'
+  when 1
+  then 'Vigente'
+  end VIGENTE
+  
+FROM empleado a, persona b, tipoempleado c
+WHERE a.rut=b.rut AND a.idtipoemp=c.idtipoemp
+order by a.idempleado asc;
+end;
+/
+
+
+--Secuencia para generar id Empleado Automatico
+create sequence emp_seq start with 001;
+/
+
+--Trigger para insertar el id en el momento de insertar empleado
+create or replace trigger emp_trig
+    before insert on EMPLEADO
+        for each row
+    begin
+        select emp_seq.NEXTVAL
+        into :new.IDEMPLEADO
+        from dual;
+END;
+/
+
+
+--Proce INSERTAR EMPLEADO
+
+create or replace procedure insertarEmpleado (
+    rut in Varchar2,
+    nom in VARCHAR2,
+    apepa in VARCHAR2,
+    apema in VARCHAR2, 
+    mail in VARCHAR2, 
+    sex in VARCHAR2, 
+    fono in VARCHAR2, 
+    fecnac in date, 
+    tipoemp in number)
+
+as
+
+BEGIN
+    Insert into PERSONA (
+    RUT,
+    NOMBRE,
+    APELLIDOPATERNO,
+    APELLIDOMATERNO,
+    EMAIL,
+    GENERO,
+    TELEFONO,
+    FECHANAC,
+    IDTIPOPER,
+    VIGENTE)
+    
+    VALUES (
+    rut,
+    nom,
+    apepa,
+    apema, 
+    mail, 
+    sex,
+    fono,
+    fecnac,
+    1,
+    1);
+    
+    insert into Empleado (
+    RUT,
+    IDTIPOEMP)
+    VALUES (rut,
+    tipoemp);
+
+END;
+/
+
+--Actualizar Empleado
+
+create or replace procedure ActualizarEmpleado (idemp in number, rut in Varchar2, nom in VARCHAR2, apepa in VARCHAR2,
+apema in VARCHAR2, mail in VARCHAR2, sex in VARCHAR2, fono in VARCHAR2, fecnac in date, tipoemp in number)
+
+as
+
+vid number(10,0) := idemp;
+vrut VARCHAR2(15):=rut;
+vnom VARCHAR2(50):=nom ; 
+vapepa VARCHAR2(50):=apepa ;
+vapema VARCHAR2(50):=apema ;
+vmail VARCHAR2(100):= mail; 
+vsex VARCHAR2(15):=sex ;
+vfono VARCHAR2(15) := fono;
+vfecha date:= fecnac;
+vtipoemp number(1,0) := tipoemp;
+
+
+
+begin
+
+
+    update PERSONA set RUT = vrut,
+        NOMBRE = vnom,
+        APELLIDOPATERNO = vapepa,
+        APELLIDOMATERNO = vapema,
+        EMAIL=vmail,
+        GENERO=vsex,
+        TELEFONO = vfono,
+        fechanac = vfecha
+    
+    Where RUT = vrut;
+    
+    
+    update EMPLEADO set IDEMPLEADO = vid, RUT = vrut, IDTIPOEMP = vtipoemp where IDTIPOEMP = vid;
+    
+Exception
+    when NO_DATA_FOUND then
+    null;
+    When Others then
+    raise;
+END ActualizarEmpleado;
+/
+
+--Proce combobox tipo empleado
+
+create or replace procedure combotipoemp (emps out SYS_REFCURSOR)
+as
+begin
+
+    open emps for select * FROM tipoempleado
+ORDER BY nomtipoemp asc;
+
+end;
+/
+
+--SP Listar Pacientes
+
+create or replace PROCEDURE mostrarclientes (registro OUT SYS_REFCURSOR) AS
+    BEGIN
+        OPEN registro FOR select
+    p.idpaciente ID,
+    p.rut,
+    pe.nombre,
+    pe.apellidopaterno "APELLIDO PATERNO",
+    pe.apellidomaterno "APELLIDO MATERNO",
+    pe.EMAIL,
+    pe.GENERO,
+    pe.TELEFONO TELÉFONO,
+    pe.FECHANAC "FECHA NACIMIENTO",
+    pre.nomprevision PREVISIÓN,
+    tp.descripcion,
+    
+    case pe.vigente
+    when 0
+    then 'No Vigente'
+    when 1
+    then 'Vigente'
+    end VIGENTE
+
+from
+paciente p, persona pe, prevision pre, tramo_prevision tp
+WHERE p.rut = pe.rut and pre.idprevision=tp.idprevision and p.idtramoprevision=tp.idtramoprevision;
+
+END;
+/
+
+
+--secuencia y trigger para paciente
+create sequence pac_seq start with 001;
+/
+--Trigger para insertar el id en el momento de insertar paciente
+create or replace trigger pac_trig
+    before insert on PACIENTE
+        for each row
+    begin
+        select pac_seq.NEXTVAL
+        into :new.IDPACIENTE
+        from dual;
+END;
+/
+
+--COMBOBOX PREVISION
+create or replace procedure comboprev (prev out SYS_REFCURSOR)
+as
+begin
+
+    open prev for select * FROM prevision;
+
+end;
+/
+
+
+--COMBOBOX TRAMOPREVISION
+
+create or replace procedure combotramoprev (prev in VARCHAR2,traprev out SYS_REFCURSOR)
+as
+
+vprev VARCHAR2(1):= prev;
+
+begin
+
+    open traprev for select * FROM tramo_prevision where idprevision = vprev order by descripcion asc;
+
+end;
+/
+
+--SP insertar paciente
+
+create or replace procedure insertarcliente (
+    rut in Varchar2, 
+    nom in VARCHAR2, 
+    apep in VARCHAR2,
+    apem in VARCHAR2,
+    mail in VARCHAR2,
+    sex in VARCHAR2,
+    cel in VARCHAR2,
+    fecnac in date, 
+    prev in number 
+     )
+
+as
+BEGIN
+    
+    Insert into PERSONA (RUT, NOMBRE, APELLIDOPATERNO,APELLIDOMATERNO,EMAIL,GENERO,TELEFONO,FECHANAC,idtipoper,vigente)
+    VALUES (rut, nom, apep, apem, mail, sex, cel, fecnac,1,1);
+    
+    INSERT INTO PACIENTE (RUT, IDTRAMOPREVISION) 
+    VALUES (rut, prev);
+    
+    
+
+END;
+/
+
+--SP Actualizar Paciente
+
+create or replace procedure ActualizarCliente (ide in number, rut in Varchar2, nom in VARCHAR2, apepa in VARCHAR2,
+apema in VARCHAR2, mail in VARCHAR2, sex in VARCHAR2, fono in VARCHAR2, fecnac in date, prev in number)
+
+as
+vid number := ide;
+vrut VARCHAR2(12):=rut;
+vnom VARCHAR2(50):=nom ; 
+vapepa VARCHAR2(50):=apepa ;
+vapema VARCHAR2(50):= apema; 
+vmail Varchar2(50):= mail;
+vsex VARCHAR2(20):= sex;
+vfono VARCHAR2(50) := fono;
+vfecnac VARCHAR2(50):=fecnac ;
+
+vprev number:= prev;
+
+begin
+    update PERSONA set RUT = vrut, NOMBRE = vnom, APELLIDOPATERNO = vapepa, APELLIDOMATERNO=vapema, EMAIL=vmail, GENERO = vsex,
+    TELEFONO = vfono, FECHANAC = vfecnac Where Rut = vrut;
+    
+    update PACIENTE set idpaciente=vid, RUT=vrut, idtramoprevision=vprev where idpaciente=vid;
+    
+Exception
+    when NO_DATA_FOUND then
+    null;
+    When Others then
+    raise;
+END ActualizarCliente;
+/
+
+
+
+
+--SP VIGENCIA
+
+create or replace procedure situacionvigente (rut in VARCHAR2,VIGENTE in number)
+as
+    vrut VARCHAR2(15):= rut;
+    
+Begin
+        update Persona 
+        
+        set VIGENTE = case VIGENTE
+        when 1
+        then 0
+        when 0
+        then 1
+        END
+        
+        where rut = vrut;
+    
+Exception
+    when NO_DATA_FOUND then
+    null;
+    When Others then
+    raise;
+END;
+/
+
+
+--SP Listar Proveedor
+
+create or replace PROCEDURE mostrarproveedor (registro OUT SYS_REFCURSOR) AS
+    BEGIN
+        OPEN registro FOR SELECT
+  a.idproveedor ID,
+  b.RUT,
+  c.nomproducto "PRODUCTO",
+  b.NOMBRE "RAZON SOCIAL",
+  b.EMAIL,
+  b.TELEFONO TELÉFONO,
+  b.FECHANAC "FECHA NACIMIENTO",
+  case b.idtipoper
+  when 1
+  then 'Natural'
+  when 2
+  then 'Juridica'
+  end TIPO,
+  
+  case b.vigente
+  when 0
+  then 'No Vigente'
+  when 1
+  then 'Vigente'
+  end VIGENTE
+  
+FROM proveedor a, persona b, producto c
+WHERE a.rut=b.rut AND a.idproveedor=c.idproveedor;
+
+END;
+/
+
+
+--secuencia y trigger para proveedor
+create sequence prov_seq start with 001;
+/
+--Trigger para insertar el id en el momento de insertar proveedor
+create or replace trigger prov_trig
+    before insert on PROVEEDOR
+        for each row
+    begin
+        select prov_seq.NEXTVAL
+        into :new.IDPROVEEDOR
+        from dual;
+END;
+/
+
+
+--SP Agregar Proveedor
+
+create or replace procedure insertarproveedor (rut in Varchar2, nom in VARCHAR2, mail in VARCHAR2,
+fono in VARCHAR2, fecnac in date)
+
+as
+BEGIN
+    Insert into PERSONA (RUT, NOMBRE, EMAIL,TELEFONO,FECHANAC,idtipoper,vigente)
+    VALUES (rut, nom, mail, fono, fecnac,2,1);
+    
+    insert into PROVEEDOR (RUT)
+    VALUES (rut);
+
+END;
+/
+
+
+
+--SP MODIFICAR PROVEEDOR
+create or replace procedure ActualizarProveedor (ide in number, rut in Varchar2, nom in VARCHAR2, mail in VARCHAR2,
+fono in VARCHAR2, fecnac in date)
+
+as
+vid NUMBER (17,0) := ide;
+vrut VARCHAR2(12):=rut;
+vnom VARCHAR2(100):=nom ; 
+vmail VARCHAR2(100):=mail ;
+vfono VARCHAR2(100):= fono; 
+vfecnac date:=fecnac ;
+
+
+begin
+
+    update persona set RUT = vrut, NOMBRE = vnom, EMAIL = vmail, TELEFONO = vfono, FECHANAC = vfecnac where RUT = vrut;
+    
+    update PROVEEDOR set IDPROVEEDOR = vid, RUT = vrut Where IDPROVEEDOR = vid;
+    
+Exception
+    when NO_DATA_FOUND then
+    null;
+    When Others then
+    raise;
+END ActualizarProveedor;
+/
+
+
+
+--SP ELIMINAR EMPLEADO DESDE BDD
+create or replace procedure eliminaEmpleado (ide in Int, rut in VARCHAR2)
+as
+    vid Int:= ide;
+    vrut VARCHAR2(15):= rut;
+Begin
+    delete from EMPLEADO where IDEMPLEADO = vid;
+    DELETE FROM PERSONA WHERE RUT = vrut;
+END;
+/
+
+
+--SP ELIMINAR PACIENTE DESDE BDD
+create or replace procedure eliminaCliente (ide in number, rut in VARCHAR2)
+as
+    vid Int:= ide;
+    vrut VARCHAR2(15):= rut;
+Begin
+    delete from PACIENTE where IDPACIENTE = vid;
+    DELETE FROM PERSONA WHERE RUT = vrut;
+END;
+/
+
+
+--SP ELIMINAR PROVEEDOR DESDE BDD
+create or replace procedure eliminaProveedor (ide in NUMBER, rut in VARCHAR2)
+as
+    vid number := ide;
+    vrut VARCHAR2(15):= rut;
+Begin
+    delete from PROVEEDOR where IDPROVEEDOR = vid;
+    DELETE FROM PERSONA WHERE RUT=vrut;
+END;
+/
+
+--SP REPORTE EMPLEADO
+create or replace PROCEDURE REPORTEEMP (emp out sys_refcursor)
+AS
+Begin
+    open emp for SELECT
+  a.idempleado ID,
+  b.RUT,
+  c.nomtipoemp ,
+  b.NOMBRE,
+  b.apellidopaterno ,
+  b.APELLIDOMATERNO ,
+  b.EMAIL,
+  b.GENERO,
+  b.TELEFONO,
+  b.FECHANAC,
+  case b.vigente
+  when 0
+  then 'No Vigente'
+  when 1
+  then 'Vigente'
+  end VIGENTE
+
+FROM empleado a, persona b, tipoempleado c
+WHERE a.rut=b.rut AND a.idtipoemp=c.idtipoemp
+order by a.idempleado asc;
+end;
+/
+
+
+--SP MOSTRARPRODUCTO REPORTE
+
+create or replace procedure MostrarProducto (prod out sys_refcursor)
+is
+begin
+open prod for select
+
+prod.idproducto,
+prod.nomproducto,
+prod.sku,
+prod.marca,
+prod.descripcion,
+prod.vencimiento,
+prod.preciocompra,
+prod.precioventa,
+prod.stock,
+prod.stockcritico,
+prov.rut,
+pers.nombre,
+cat.nomcategoria
+
+from PROVEEDOR prov, PRODUCTO prod, PERSONA pers, CATEGORIA cat
+WHERE prod.idproveedor = prov.idproveedor and prov.rut = pers.rut and prod.idcategoria = cat.idcategoria;
+
+end;
+/
+
+--SP INSERTAR PRODUCTO
+/*create or replace procedure insertarproducto ( 
+    nom in VARCHAR2, 
+    marc in VARCHAR2,
+    des in VARCHAR2,
+    fecven in date,
+    precom in number,
+    preven in number,
+    stock in number, 
+    stockcri in number,
+    prov in number,
+    cat in number
+     )
+
+as
+BEGIN
+
+    Insert into PRODUCTO (NOMPRODUCTO,MARCA,DESCRIPCION,VENCIMIENTO,PRECIOCOMPRA,PRECIOVENTA,STOCK,STOCKCRITICO,IDPROVEEDOR,IDCATEGORIA)
+    VALUES (nom, marc, des, fecven, precom, preven, stock, stockcri,prov,cat);
+
+
+END;
+*/
+
+
+--SP y SEQ AGREGAR PRODUCTO CON SKU
+create sequence SEQ_PRODUCTO_ID start with 002;
+/
+
+
+create or replace PROCEDURE SET_PRODUCTOAGREGA 
+(
+    V_IDTIPOPRODUCTO    IN  PRODUCTO.IDCATEGORIA%TYPE,
+    V_IDPROVEEDOR       IN  PRODUCTO.IDPROVEEDOR%TYPE,
+    V_NOMPRODUCTO       IN  PRODUCTO.NOMPRODUCTO%TYPE,
+    V_VENCIMIENTO       IN  PRODUCTO.VENCIMIENTO%TYPE,
+    V_IDMARCAPRODUCTO   IN  PRODUCTO.MARCA%TYPE,
+    V_PRECIOCOMPRA      IN  PRODUCTO.PRECIOCOMPRA%TYPE,
+    V_PRECIOVENTA       IN  PRODUCTO.PRECIOVENTA%TYPE,
+    V_STOCK             IN  PRODUCTO.STOCK%TYPE,
+    V_STOCKCRITICO      IN  PRODUCTO.STOCKCRITICO%TYPE,
+    V_DESCRIPCION       IN  PRODUCTO.DESCRIPCION%TYPE
+)
+IS
+
+SKU             PRODUCTO.SKU%TYPE;
+IDPROVEEDOR     PRODUCTO.IDPROVEEDOR%TYPE;
+PROVEEDOR       VARCHAR2(4);
+CATEGORIA       VARCHAR2(4);
+FECHA           VARCHAR (20);
+FECVEN     VARCHAR2(20);
+DIA             VARCHAR2(4);  
+MES             VARCHAR2(4);
+ANIO            VARCHAR2(10);
+NOMPRODUCTO     VARCHAR(5);
+
+BEGIN
+
+    --LLENADO VARIABLE PROVEEDOR
+    IDPROVEEDOR := TO_CHAR(V_IDPROVEEDOR);
+    PROVEEDOR := '';
+    IF LENGTH(IDPROVEEDOR) >= 3 THEN
+        PROVEEDOR := SUBSTR(IDPROVEEDOR,1,3);
+    ELSE
+        IF LENGTH(IDPROVEEDOR) = 2 THEN
+
+            PROVEEDOR := '0'||SUBSTR(IDPROVEEDOR,1);
+        ELSE
+            PROVEEDOR := '0'||'0'||IDPROVEEDOR;
+        END IF;
+    END IF;
+
+    --LLENADO VARIABLE CATEGORIA
+    SELECT UPPER(SUBSTR(NOMCATEGORIA,1,3)) 
+    INTO   CATEGORIA 
+    FROM   CATEGORIA
+    WHERE  IDCATEGORIA = V_IDTIPOPRODUCTO;
+
+    --LLENADO VARIABLE VENCIMIENTO
+    FECHA := TO_CHAR(V_VENCIMIENTO);
+    IF V_VENCIMIENTO IS NULL THEN   
+        FECVEN := '00000000';
+    ELSE
+        ANIO := TO_CHAR(EXTRACT(YEAR FROM V_VENCIMIENTO));
+        MES  := TO_CHAR(EXTRACT(MONTH FROM V_VENCIMIENTO));
+        DIA  := TO_CHAR(EXTRACT(DAY FROM V_VENCIMIENTO));
+        FECVEN := DIA||MES||ANIO;
+    END IF;
+
+    --LLENADO CODIGO SECUENCIAL NOMBRE PRODUCTO
+    NOMPRODUCTO := UPPER(SUBSTR(V_NOMPRODUCTO,1,3));
+
+ --CONSTRUCCION VARIABLE FINAL SKU
+ SKU := PROVEEDOR||CATEGORIA||FECVEN||NOMPRODUCTO;
+
+INSERT INTO PRODUCTO 
+                    ( IDPRODUCTO
+                    ,NOMPRODUCTO
+                    ,SKU
+                    ,MARCA
+                    ,descripcion
+                    ,VENCIMIENTO
+                    ,PRECIOCOMPRA
+                     ,PRECIOVENTA
+                     ,STOCK
+                     ,STOCKCRITICO
+                     ,IDPROVEEDOR
+                     ,IDCATEGORIA
+
+
+                     )
+            VALUES (  SEQ_PRODUCTO_ID.NEXTVAL
+                    ,V_NOMPRODUCTO
+                    ,SKU
+                    ,V_IDMARCAPRODUCTO
+                    ,V_DESCRIPCION
+                    ,V_VENCIMIENTO
+                    ,V_PRECIOCOMPRA
+                     ,V_PRECIOVENTA
+                     ,V_STOCK
+                     ,V_STOCKCRITICO
+                     ,V_IDPROVEEDOR
+                     ,V_IDTIPOPRODUCTO
+                      );
+
+EXCEPTION
+WHEN OTHERS THEN
+DBMS_OUTPUT.PUT_LINE(SQLCODE);
+DBMS_OUTPUT.PUT_LINE(SQLERRM);
+
+END SET_PRODUCTOAGREGA;
+/
+
+--SP ACTUALIZAR PRODUCTO
+
+create or replace procedure ActualizarProducto (ide in number, nom in Varchar2, marc in VARCHAR2, des in VARCHAR2,
+ fecven in date, precom in number, preven in number, stock in number, stockcri in number, prov in number, cat in number)
+
+as
+vid NUMBER (17,0) := ide;
+vnom VARCHAR2(100):=nom;
+vmarc VARCHAR2(100):=marc ; 
+vdes VARCHAR2(100):=des ;
+vfecven date:=fecven ;
+vpreciocom number(10,0) := precom;
+vprecioven number(10,0) := preven;
+vstock number (10,0) := stock;
+vstockcri number := stockcri;
+vprov number := prov;
+vcat number := cat;
+
+
+
+begin
+
+    update PRODUCTO set 
+    nomproducto = vnom
+    , MARCA = vmarc
+    , DESCRIPCION = vdes
+    , VENCIMIENTO = vfecven
+    , preciocompra = vpreciocom
+    , precioventa = vprecioven
+    , stock = vstock
+    , stockcritico = vstockcri
+    , idproveedor = vprov
+    , idcategoria = vcat
+    
+    where idproducto = vid;
+
+
+Exception
+    when NO_DATA_FOUND then
+    null;
+    When Others then
+    raise;
+END ActualizarProducto;
+/
+
+
+--COMBOPROVEEDOR para PRODUCTO
+
+create or replace procedure comboproveedor (pro out SYS_REFCURSOR)
+is
+BEGIN
+
+open pro for SELECT
+
+pro.idproveedor,
+pers.nombre
+
+FROM
+proveedor pro,PERSONA pers
+WHERE pro.rut = pers.rut
+order by pers.nombre asc;
+
+END;
+/
+
+--Eliminar Producto
+
+create or replace procedure eliminaproducto (ide in number)
+as
+    vid Int:= ide;
+Begin
+
+    delete from PRODUCTO where idproducto = vid;
+
+END;
+/
+
+--SP MOSTRAR PRODUCTO EN APP
+
+create or replace procedure MostrarProductogeneral (prod out sys_refcursor)
+is
+begin
+open prod for select
+
+prod.idproducto ID,
+prod.nomproducto NOMBRE,
+prod.sku,
+prod.marca,
+prod.descripcion,
+prod.vencimiento "FECHA VENCIMIENTO",
+prod.preciocompra "PRECIO COMPRA",
+prod.precioventa "PRECIO VENTA",
+prod.stock,
+prod.stockcritico "STOCK CRITICO",
+prov.rut,
+pers.nombre,
+cat.nomcategoria
+
+from PROVEEDOR prov, PRODUCTO prod, PERSONA pers, CATEGORIA cat
+WHERE prod.idproveedor = prov.idproveedor and prov.rut = pers.rut and prod.idcategoria = cat.idcategoria;
+
+end;
+/
+
+
+--SP REPORTE DE STOCK
+create or replace procedure repstock (stock out SYS_REFCURSOR)
+as
+begin
+open stock for
+SELECT
+    nomproducto,
+    marca,
+    stock,
+    stockcritico,
+    preciocompra,
+    precioventa,
+    preciocompra*stock Inversion,
+    precioventa*stock Ganancia
+FROM PRODUCTO;
+
+end;
+/
+
+
+
+
+--SP MODIFICAR PERFIL APP DESKTOP
+
+create or replace procedure cambiarperfil (ide in number,rut in Varchar2, usuario in Varchar2, pass in varchar2, nom in Varchar2, apepa in varchar2, apema in Varchar2, mail in varchar2)
+
+as
+
+vid number := ide;
+vrut VARCHAR2(15):=rut;
+vuser VARCHAR2(12):=usuario;
+vpass VARCHAR2(50):=pass ; 
+vnom VARCHAR2(50):=nom ;
+vapepa VARCHAR2(50):= apepa;
+vapema Varchar2(50):= apema;
+vmail Varchar2(50):= mail;
+
+
+begin
+
+    update PERSONA set rut = vrut, NOMBRE = vnom, APELLIDOPATERNO = vapepa, APELLIDOMATERNO=vapema, EMAIL=vmail Where Rut = vrut;
+
+    update USUARIO set idusuario=vid, RUT=vrut, CLAVE = vpass where idusuario=vid;
+
+    update ACCESO set idacceso = vid, Nombre = vuser where idacceso=vid;
+
+Exception
+    when NO_DATA_FOUND then
+    null;
+    When Others then
+    raise;
+    
+END cambiarperfil;
+/
+
+
+
+--SP MOSTRAR RESERVA
+create or replace procedure mostrarreserva (reser out SYS_REFCURSOR)
+is
+begin
+open reser for select
+re.idreserva reserva
+,re.FECHA
+,hr.hora
+,pa.RUT
+,pe.nombre
+,pe.apellidopaterno
+,pe.apellidomaterno
+,es.nomespecialidad Especialidad
+,er.nombre Estado
+,er.descripcion
+
+
+from
+Reserva re, paciente pa, persona pe, especialidad es, horareserva hr,estado_reserva er
+where re.idhora=hr.idhora and re.idpaciente = pa.idpaciente and re.idestado = er.idestado and re.idespecialidad = es.idespecialidad
+and pe.rut = pa.rut;
+
+end;
+/
+
+--SECUENCIA USUARIO
+create sequence USUARIO_SEQ start with 004;
+/
+--Trigger para insertar el id en el momento de Registrar nuevo Paciente
+create or replace trigger USUARIO_trig
+    before insert on USUARIO
+        for each row
+    begin
+        select USUARIO_SEQ.NEXTVAL
+        into :new.IDUSUARIO
+        from dual;
+END;
+/
+
+--SECUENCIA IDACCESO
+create sequence IDACCESO_SEQ start with 004;
+/
+--Trigger para insertar el id en el momento de Registrar nuevo Paciente(IDACCESO) 
+create or replace trigger ACCESO_trig
+    before insert on ACCESO
+        for each row
+    begin
+        select IDACCESO_SEQ.NEXTVAL
+        into :new.IDACCESO
+        from dual;
+END;
+/
+
+--SP REGISTRO PACIENTE
+create or replace procedure registropaciente (
+    username in VARCHAR2,
+    pass in VARCHAR2,
+    rut in Varchar2, 
+    nom in VARCHAR2, 
+    apep in VARCHAR2,
+    apem in VARCHAR2,
+    mail in VARCHAR2,
+    sex in VARCHAR2,
+    cel in VARCHAR2,
+    fecnac in date, 
+    prev in number 
+     )
+     
+as
+BEGIN
+    
+    Insert into PERSONA (RUT, NOMBRE, APELLIDOPATERNO,APELLIDOMATERNO,EMAIL,GENERO,TELEFONO,FECHANAC,idtipoper,vigente)
+    VALUES (rut, nom, apep, apem, mail, sex, cel, fecnac,1,1);
+    
+    INSERT INTO PACIENTE (RUT, IDTRAMOPREVISION) 
+    VALUES (rut, prev);
+
+    insert into ACCESO(idacceso,NOMBRE,DESCRIPCION)
+    values(IDACCESO_SEQ.nextval,username,'Paciente');
+
+    Insert into USUARIO(idusuario,RUT,CLAVE,ADMIN,idacceso)
+    values (USUARIO_SEQ.nextval,rut,pass,0,IDACCESO_SEQ.currval);
+
+
+
+END;
+/
+
+
+--COMBOBOXS
+--SP COMBOBOX CATEGORIA
+create or replace procedure combocategoria (cat OUT SYS_REFCURSOR)
+as
+begin
+open cat for SELECT
+    *
+FROM Categoria;
+end;
+/
+
+--SP COMBOBOX PREVISION
+create or replace  procedure comboprev (prev out SYS_REFCURSOR)
+as
+begin
+
+    open prev for select * FROM prevision;
+
+end;
+/
+
+--SP COMBOBOX ESTADO RESERVA
+create or replace procedure COMBOESTADORESERVA (cmbstat out SYS_REFCURSOR)
+is
+begin
+open cmbstat for select
+*
+from
+ESTADO_RESERVA;
+
+end;
+/
+
+--SP COMBOBOX ESPECIALIDAD
+create or replace procedure COMBOESPECIALIDAD (cmbesp out SYS_REFCURSOR)
+is
+begin
+open cmbesp for select
+*
+from
+ESPECIALIDAD;
+
+end;
+/
+
+--SP TRAMOPREVISION PARA DJANGO
+create or replace procedure comboletraprev (tipoprev out SYS_REFCURSOR)
+as
+begin
+
+    open tipoprev for select * FROM tramo_prevision;
+
+end;
+/
+
+--SP PARA CMB ANIDADO EN DJANGO
+create or replace procedure combotramo_django (djangoprev out SYS_REFCURSOR, v_prevision VARCHAR2)
+as
+begin
+
+    open djangoprev for select * FROM tramo_prevision where idprevision = v_prevision order by idtramoprevision asc;
+
+end;
+/
