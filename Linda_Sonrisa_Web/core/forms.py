@@ -2,7 +2,15 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Reserva, Producto
+from .models import Reserva, Producto, Acceso, Usuario,Persona,Paciente
+
+
+
+
+# class LoginForm(forms.Form):
+#     username = forms.CharField()
+#     password = forms.CharField(widget=forms.PasswordInput())
+
 
 # class ReservaForm(ModelForm):
 
@@ -16,11 +24,11 @@ from .models import Reserva, Producto
 #     }
 
 
-# class CustomUserForm(UserCreationForm):
+# class formLog(forms.ModelForm):
     
 #     class Meta:
-#         model = User
-#         fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
+#         model = Acceso,Usuario,Paciente,Persona
+#         fields = ['rut', 'nombre', 'apellidopaterno','apellidomaterno', 'nombre', 'clave']
 
 
 

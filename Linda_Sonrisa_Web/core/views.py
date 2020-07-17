@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
 from django.contrib.auth.decorators import login_required, permission_required
-# from .forms import CustomUserForm
+# from core.forms import formLog
 from django.contrib.auth import login, authenticate
-from .models import Reserva, Producto
+from .models import Reserva, Producto, Usuario,Acceso,Persona,Paciente
 # from .forms import ReservaForm, ProductosForm
+# from forms import LoginForm
 from django.db import connection
 
 # Create your views here.
@@ -11,7 +14,6 @@ from django.db import connection
 
 def home(request):
     return render(request, 'core/home.html')
-
 
 
 
@@ -29,7 +31,7 @@ def nueva_reserva(request):
     return render(request, 'core/nueva_reserva.html')
 
 
-#Producto
+# Producto
 def Lista_Productos():
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
@@ -68,7 +70,8 @@ def productos_form(request):
         stock = request.POST.get('stock')
         stockcritico = request.POST.get('stockcri')
         descripcion = request.POST.get('desc')
-        agregar_producto(idcategoria, idproveedor, nomproducto, vencimiento,marca, preciocompra, precioventa, stock, stockcritico, descripcion)
+        agregar_producto(idcategoria, idproveedor, nomproducto, vencimiento,
+                         marca, preciocompra, precioventa, stock, stockcritico, descripcion)
         data['mensaje'] = 'Agregado Correctamente'
 
     return render(request, 'core/productos_form.html', data)
@@ -104,19 +107,19 @@ def Combo_Proveedor():
     return lista
 
 
-def agregar_producto(idcategoria, idproveedor, nomproducto,vencimiento, marca, preciocompra, precioventa, stock, stockcritico, descripcion):
+def agregar_producto(idcategoria, idproveedor, nomproducto, vencimiento, marca, preciocompra, precioventa, stock, stockcritico, descripcion):
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
-    cursor.callproc("SET_PRODUCTOAGREGA", [idcategoria, idproveedor, nomproducto,vencimiento, marca, preciocompra, precioventa, stock, stockcritico, descripcion])
+    cursor.callproc("SET_PRODUCTOAGREGA", [idcategoria, idproveedor, nomproducto,
+                                           vencimiento, marca, preciocompra, precioventa, stock, stockcritico, descripcion])
 
 
-
-#Registro de paciente
+# Registro de paciente
 
 def registro(request):
     data = {
-    'prevision': Combo_Prev(),
-    #'tramo': Combo_Anidado(),
+        'prevision': Combo_Prev(),
+        # 'tramo': Combo_Anidado(),
     }
 
     if request.method == 'POST':
@@ -139,10 +142,11 @@ def registro(request):
     return render(request, 'registration/registro.html', data)
 
 
-def registro_paciente(userna,passw,rut,nom,apep,apem,mail,sex,cel,fecnac,prev):
+def registro_paciente(userna, passw, rut, nom, apep, apem, mail, sex, cel, fecnac, prev):
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
-    cursor.callproc("REGISTROPACIENTE", [userna,passw,rut,nom,apep,apem,mail,sex,cel,fecnac,prev])
+    cursor.callproc("REGISTROPACIENTE", [
+                    userna, passw, rut, nom, apep, apem, mail, sex, cel, fecnac, prev])
 
 
 def Combo_Prev():
@@ -187,15 +191,31 @@ def Combo_Anidado(idprevision):
     return lista
 
 
-
-
 def comboboxanidado(request):
     prevision = request.GET.get('prevision')
     data = {
-        'tramo':Combo_Anidado(prevision)
+        'tramo': Combo_Anidado(prevision)
     }
 
     return render(request, 'core/combobox_anidado.html', data)
 
 
+def Lista_Reservas():
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
 
+    cursor.callproc("MOSTRARRESERVA", [out_cur])
+
+    lista = []
+    for fila in out_cur:
+        lista.append(fila)
+
+    return lista
+
+
+def reserva_list(request):
+    data = {
+        'reservas': Lista_Reservas()
+    }
+    return render(request, 'core/reservas_pacientes.html', data)

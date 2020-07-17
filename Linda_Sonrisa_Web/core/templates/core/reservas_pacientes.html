@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+
+
+
+<br>
+<br>
+<br>
+<br>
+<div><br></div>
+
+<h1 class="text-center">Reservas</h1>
+
+<div class="container">
+    <div class="row col-12">
+
+<div class="col item-align-right">
+    <a name="" id="" class="btn btn-primary" href="{% url 'nueva_reserva' %}" role="button">Agregar Reserva</a>
+</div>
+
+<div class="form col-12">
+    
+    <!-- <a class="btn btn-lg btn-hero bg-primary" href="/nueva_reserva/" id="bton" style="color: whitesmoke; background-color: #347ab6;">Nueva Reserva</a> -->
+
+<table class="table table-primary shadow rounded border col-12">
+    
+    <tr class="bg-primary border rounded text-center">
+        <th>N°</th>
+        <th>Fecha Reserva</th>
+        <th>Hora Reserva</th>
+        <th>RUT</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Especialidad</th>
+        <th>Proceso</th>
+        <th>Estado</th>
+
+    </tr>
+    {% for r in reservas %}
+
+    <tr class="bg-dark border rounded">
+        <td>{{r.0}}</td>
+        <td>{{r.1}}</td>
+        <td>{{r.2}}</td>
+        <td>{{r.3}}</td>
+        <td>{{r.4}}</td>
+        <td>{{r.5}}</td>
+        <td>{{r.6}}</td>
+        <td>{{r.7}}</td>
+        <td>{{r.8}}</td>
+        <td>{{r.9}}</td>
+
+    </tr>
+
+    {% endfor %}
+</table>
+
+</div>
+
+</div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+
+
+
+{% endblock contenido %}

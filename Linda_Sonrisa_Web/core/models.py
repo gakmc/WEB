@@ -182,6 +182,10 @@ class Persona(models.Model):
     idtipoper = models.ForeignKey('Tipopersona', models.DO_NOTHING, db_column='idtipoper')
     vigente = models.BooleanField(blank=True, null=True)
 
+    def __str__(self):
+        cadena=self.nombre+" "+self.apellidopaterno
+        return cadena
+
     class Meta:
         managed = False
         db_table = 'persona'
@@ -293,6 +297,9 @@ class TramoPrevision(models.Model):
     descripcion = models.CharField(max_length=100, blank=True, null=True)
     costo_pago = models.FloatField(blank=True, null=True)
     idprevision = models.ForeignKey(Prevision, models.DO_NOTHING, db_column='idprevision')
+
+    def __str__(self):
+        return self.descripcion
 
     class Meta:
         managed = False
